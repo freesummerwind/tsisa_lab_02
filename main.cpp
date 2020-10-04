@@ -22,6 +22,16 @@ void printLine() {
          << '+' << std::string(6, '-') << '+' << '\n';
 }
 
+void printTableHead(const std::vector<double>& p) {
+    printLine();
+
+    cout << '|' << std::setw(5) << "q/P" << std::setw(3) << '|';
+    for(auto item : p) cout << std::setw(5) << item << " |";
+    cout << '\n';
+
+    printLine();
+}
+
 const double LOWER = -2.;
 const double UPPER = 0.;
 const std::vector<double> P_VALUES = {0.9, 0.91, 0.92, 0.93, 0.94,
