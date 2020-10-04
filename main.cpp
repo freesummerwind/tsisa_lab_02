@@ -32,6 +32,25 @@ void printTableHead(const std::vector<double>& p) {
     printLine();
 }
 
+std::vector<std::vector<int>> pointsNumber(const std::vector<double>& p, const std::vector<double>& q) {
+    printTableHead(p);
+
+    std::vector<std::vector<int>> points(q.size());
+    for(size_t i = 0; i < q.size(); ++i) {
+        points[i].resize(p.size());
+        cout << '|' << std::setw(6) << q[i] << " |";
+        for(size_t j = 0; j < p.size(); ++j) {
+            points[i][j] = ceil(std::log(1 - p[j]) / std::log(1 - q[i]));
+            cout << std::setw(5) << points[i][j] << " |";
+        }
+        cout << '\n';
+    }
+
+    printLine();
+
+    return points;
+}
+
 const double LOWER = -2.;
 const double UPPER = 0.;
 const std::vector<double> P_VALUES = {0.9, 0.91, 0.92, 0.93, 0.94,
@@ -42,6 +61,8 @@ const std::vector<double> Q_VALUES = {0.005, 0.01, 0.015, 0.02, 0.025,
                            0.08, 0.085, 0.09, 0.095, 0.1};
 
 int main() {
+
+    auto points = pointsNumber(P_VALUES, Q_VALUES);
 
     return 0;
 }
