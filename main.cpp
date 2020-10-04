@@ -13,6 +13,14 @@ double f_(const double x) {
     return f(x) * sin(5*x);
 }
 
+void printLine() {
+    cout << '+' << std::string(7, '-') << '+' << std::string(6, '-')
+         << '+' << std::string(6, '-') << '+' << std::string(6, '-')
+         << '+' << std::string(6, '-') << '+' << std::string(6, '-')
+         << '+' << std::string(6, '-') << '+' << std::string(6, '-')
+         << '+' << std::string(6, '-') << '+' << std::string(6, '-')
+         << '+' << std::string(6, '-') << '+' << '\n';
+}
 
 const double LOWER = -2.;
 const double UPPER = 0.;
