@@ -47,7 +47,8 @@ void printTable(const std::vector<double>& p, const std::vector<double>& q,
     printLine();
 }
 
-std::vector<std::vector<double>> pointsNumber(const std::vector<double>& p, const std::vector<double>& q) {
+std::vector<std::vector<double>> pointsNumber(const std::vector<double>& p,
+        const std::vector<double>& q) {
     std::vector<std::vector<double>> points(q.size());
     for(size_t i = 0; i < q.size(); ++i) {
         points[i].resize(p.size());
