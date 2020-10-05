@@ -15,4 +15,4 @@
 
 ![alt text](screenshots/lab_02_01.png "Таблица с количеством точек для всех p и q")
 ![alt text](screenshots/lab_02_02.png "Результат работы функции случайного поиска для f(x)")
-![alt text](screenshots/lab_01_01.png "Результат работы функции случайного поиска для f(x)*sin(5x)")
+![alt text](screenshots/lab_02_03.png "Результат работы функции случайного поиска для f(x)*sin(5x)")
