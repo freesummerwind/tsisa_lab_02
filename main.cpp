@@ -51,6 +51,10 @@ std::vector<std::vector<int>> pointsNumber(const std::vector<double>& p, const s
     return points;
 }
 
+double randomInRange(const double lower, const double upper) {
+    return lower + rand() * 1./RAND_MAX * (upper - lower);
+}
+
 const double LOWER = -2.;
 const double UPPER = 0.;
 const std::vector<double> P_VALUES = {0.9, 0.91, 0.92, 0.93, 0.94,
