@@ -14,32 +14,32 @@ double f_(const double x) {
 }
 
 void printLine() {
-    cout << '+' << std::string(7, '-') << '+' << std::string(6, '-')
-         << '+' << std::string(6, '-') << '+' << std::string(6, '-')
-         << '+' << std::string(6, '-') << '+' << std::string(6, '-')
-         << '+' << std::string(6, '-') << '+' << std::string(6, '-')
-         << '+' << std::string(6, '-') << '+' << std::string(6, '-')
-         << '+' << std::string(6, '-') << '+' << '\n';
+    cout << '+' << std::string(7, '-') << '+' << std::string(10, '-')
+         << '+' << std::string(10, '-') << '+' << std::string(10, '-')
+         << '+' << std::string(10, '-') << '+' << std::string(10, '-')
+         << '+' << std::string(10, '-') << '+' << std::string(10, '-')
+         << '+' << std::string(10, '-') << '+' << std::string(10, '-')
+         << '+' << std::string(10, '-') << '+' << '\n';
 }
 
 void printTableHead(const std::vector<double>& p) {
     printLine();
 
     cout << '|' << std::setw(5) << "q/P" << std::setw(3) << '|';
-    for(auto item : p) cout << std::setw(5) << item << " |";
+    for(auto item : p) cout << std::setw(9) << item << " |";
     cout << '\n';
 
     printLine();
 }
 
 void printTable(const std::vector<double>& p, const std::vector<double>& q,
-        const std::vector<std::vector<int>>& table) {
+        const std::vector<std::vector<double>>& table) {
     printTableHead(p);
 
     for(size_t i = 0; i < q.size(); ++i) {
         cout << '|' << std::setw(6) << q[i] << " |";
         for(size_t j = 0; j < p.size(); ++j) {
-            cout << std::setw(5) << table[i][j] << " |";
+            cout << std::setw(9) << table[i][j] << " |";
         }
         cout << '\n';
     }
@@ -47,16 +47,14 @@ void printTable(const std::vector<double>& p, const std::vector<double>& q,
     printLine();
 }
 
-std::vector<std::vector<int>> pointsNumber(const std::vector<double>& p, const std::vector<double>& q) {
-    std::vector<std::vector<int>> points(q.size());
+std::vector<std::vector<double>> pointsNumber(const std::vector<double>& p, const std::vector<double>& q) {
+    std::vector<std::vector<double>> points(q.size());
     for(size_t i = 0; i < q.size(); ++i) {
         points[i].resize(p.size());
         for(size_t j = 0; j < p.size(); ++j) {
             points[i][j] = ceil(std::log(1 - p[j]) / std::log(1 - q[i]));
         }
     }
-
-    printTable(p, q, points);
 
     return points;
 }
