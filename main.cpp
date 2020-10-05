@@ -64,6 +64,28 @@ double randomInRange(const double lower, const double upper) {
     return lower + rand() * 1./RAND_MAX * (upper - lower);
 }
 
+template<class Function>
+std::vector<std::vector<double>> randomSearch(
+        const std::vector<std::vector<double>>& numbers,
+        const double lower, const double upper, Function func) {
+    std::vector<std::vector<double>> table;
+    table.resize(numbers.size());
+    for(size_t i = 0; i < table.size(); ++i) {
+        table[i].resize(numbers[i].size());
+        for(size_t j = 0; j < table[i].size(); ++j) {
+            table[i][j] = func(lower);
+            for(size_t k = 0; k < numbers[i][j]; ++k) {
+                double newValue = func(randomInRange(lower, upper));
+                if(newValue < table[i][j]) {
+                    table[i][j] = newValue;
+                }
+            }
+        }
+    }
+
+    return table;
+}
+
 const double LOWER = -2.;
 const double UPPER = 0.;
 const std::vector<double> P_VALUES = {0.9, 0.91, 0.92, 0.93, 0.94,
