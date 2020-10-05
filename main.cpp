@@ -96,8 +96,22 @@ const std::vector<double> Q_VALUES = {0.005, 0.01, 0.015, 0.02, 0.025,
                            0.08, 0.085, 0.09, 0.095, 0.1};
 
 int main() {
+    cout << "Variant 4.\nFunction 1: cos(x)*th(x)\nInterval: ["
+        << LOWER << " " << UPPER << "]\n"
+        << "Function 2: cos(x)*th(x)*sin(5*x)\nInterval: ["
+        << LOWER << " " << UPPER << "]\n";
 
+    cout << "Table with number of points for each p and q:\n";
     auto points = pointsNumber(P_VALUES, Q_VALUES);
+    printTable(P_VALUES, Q_VALUES, points);
+
+    srand(time(nullptr));
+    auto valuesForF = randomSearch(points, LOWER, UPPER, f);
+    cout << "Table for function 1:\n";
+    printTable(P_VALUES, Q_VALUES, valuesForF);
+    auto valuesForF_ = randomSearch(points, LOWER, UPPER, f_);
+    cout << "Table for function 2:\n";
+    printTable(P_VALUES, Q_VALUES, valuesForF_);
 
     return 0;
 }
