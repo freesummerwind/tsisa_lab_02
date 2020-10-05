@@ -32,21 +32,31 @@ void printTableHead(const std::vector<double>& p) {
     printLine();
 }
 
-std::vector<std::vector<int>> pointsNumber(const std::vector<double>& p, const std::vector<double>& q) {
+void printTable(const std::vector<double>& p, const std::vector<double>& q,
+        const std::vector<std::vector<int>>& table) {
     printTableHead(p);
 
-    std::vector<std::vector<int>> points(q.size());
     for(size_t i = 0; i < q.size(); ++i) {
-        points[i].resize(p.size());
         cout << '|' << std::setw(6) << q[i] << " |";
         for(size_t j = 0; j < p.size(); ++j) {
-            points[i][j] = ceil(std::log(1 - p[j]) / std::log(1 - q[i]));
-            cout << std::setw(5) << points[i][j] << " |";
+            cout << std::setw(5) << table[i][j] << " |";
         }
         cout << '\n';
     }
 
     printLine();
+}
+
+std::vector<std::vector<int>> pointsNumber(const std::vector<double>& p, const std::vector<double>& q) {
+    std::vector<std::vector<int>> points(q.size());
+    for(size_t i = 0; i < q.size(); ++i) {
+        points[i].resize(p.size());
+        for(size_t j = 0; j < p.size(); ++j) {
+            points[i][j] = ceil(std::log(1 - p[j]) / std::log(1 - q[i]));
+        }
+    }
+
+    printTable(p, q, points);
 
     return points;
 }
